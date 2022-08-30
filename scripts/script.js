@@ -43,15 +43,22 @@ rollBtn.addEventListener('click', function() {
     currentScore += dice;
     document.querySelector(`#current--${activePlayer}`).textContent = currentScore;
 
-
   } else {
+
     //Switch to Player 2
-    score[activePlayer] += currentScore;
-    document.querySelector(`#score--${activePlayer}`).textContent = score[activePlayer];
-    // ternary operator if active is 0 then switch to 1 else stay 0
-    document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
-    activePlayer = activePlayer === 0 ? 1 : 0;
     document.querySelector(`#current--${activePlayer}`).textContent = 0;
+
+    //reset the current score
+    currentScore = 0;
+
+    //remove overlay when player switch
+    document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+
+    // ternary operator if active is 0 then switch to 1 else stay 0
+    activePlayer = activePlayer === 0 ? 1 : 0;
+
+
+    //add overlay when player switch
     document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
 
   }
