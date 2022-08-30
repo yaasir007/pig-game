@@ -27,7 +27,7 @@ diceImg.classList.add('hidden');
 
 let currentScore = 0;
 let activePlayer = 0;
-let score = [0, 0];
+let scores = [0, 0];
 
 rollBtn.addEventListener('click', function() {
 
@@ -57,14 +57,36 @@ rollBtn.addEventListener('click', function() {
     // ternary operator if active is 0 then switch to 1 else stay 0
     activePlayer = activePlayer === 0 ? 1 : 0;
 
-
     //add overlay when player switch
     document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
 
   }
-
 })
 
+
+holdBtn.addEventListener('click', function() {
+  //get current score for current player
+  //Add current score to total score
+  scores[activePlayer] += currentScore;
+
+  document.querySelector(`#score--${activePlayer}`).textContent = scores[activePlayer];
+
+  //Check if current player > 100 ? wins : switch player
+  if (scores[activePlayer] > 100) {
+    document.querySelector(`#score--${activePlayer}`).textContent = scores[activePlayer];
+
+    alert(`Player ${activePlayer} Wins. Thank you for playing!!!`);
+    window.location.reload();
+  } else {
+    document.querySelector(`#current--${activePlayer}`).textContent = 0;
+
+    currentScore = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    player0.classList.toggle('player--active');
+    player1.classList.toggle('player--active');
+
+  }
+})
 
 
 newGame.addEventListener('click', function () {
