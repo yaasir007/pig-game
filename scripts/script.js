@@ -30,6 +30,7 @@ let currentScore = 0;
 let activePlayer = 0;
 let scores = [0, 0];
 
+//When user click on roll button
 rollBtn.addEventListener('click', function() {
   if (playing) {
     //Generating random number for dice
@@ -64,7 +65,7 @@ rollBtn.addEventListener('click', function() {
   }
 })
 
-
+//When user clicks on hold button
 holdBtn.addEventListener('click', function() {
   if (playing) {
 
